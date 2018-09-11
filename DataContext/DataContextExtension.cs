@@ -8,14 +8,18 @@ namespace DataContext
 {
     public static class DataContextExtension
     {
+        public static void EnsureSeedData(this DataContext context)
+        {
+            SeedData(context);
 
+        }
         /// <summary>
         /// This method will insert sample data in the Database
         /// </summary>
         /// <param name="context"></param>
         private static void SeedData(DataContext context)
         {
-            context.Database.EnsureCreated();
+            bool doesDatabaseExist =  context.Database.EnsureCreated();
             if (context.WeatherInfos.Any())
             {
                 return;
