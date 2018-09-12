@@ -11,6 +11,10 @@ using Microsoft.Extensions.Options;
 using  Swashbuckle.AspNetCore.Swagger;
 using  Microsoft.EntityFrameworkCore;
 using DataContext;
+using DataContext.RepositoryContracts;
+using DataContext.RepositoryImplementation;
+using WebMicroServiceFetchWeatherData.Services.Interface;
+using WebMicroServiceFetchWeatherData.Services;
 
 namespace WebMicroServiceFetchWeatherData
 {
@@ -28,7 +32,8 @@ namespace WebMicroServiceFetchWeatherData
         {
             string connection = Configuration["ConnectionStrings:sqlliteconfig"];
             services.AddDbContext<DataContext.DataContext>(options => options.UseSqlite(connection));
-
+            services.AddTransient<IRepositoryBase, Repository>();
+            services.AddTransient<IFaultyServiceSimulator, FaultyServiceSimulator>();
             services.AddMvc();
 
             services.AddSwaggerGen(c =>

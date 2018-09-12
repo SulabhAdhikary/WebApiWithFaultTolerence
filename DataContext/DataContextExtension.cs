@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DataContext.EntityModels;
+using System;
 using System.Linq;
-using DataContext.EntityModels;
 
 namespace DataContext
 {
@@ -11,15 +9,15 @@ namespace DataContext
         public static void EnsureSeedData(this DataContext context)
         {
             SeedData(context);
-
         }
+
         /// <summary>
         /// This method will insert sample data in the Database
         /// </summary>
         /// <param name="context"></param>
         private static void SeedData(DataContext context)
         {
-            bool doesDatabaseExist =  context.Database.EnsureCreated();
+            bool doesDatabaseExist = context.Database.EnsureCreated();
             if (context.WeatherInfos.Any())
             {
                 return;
