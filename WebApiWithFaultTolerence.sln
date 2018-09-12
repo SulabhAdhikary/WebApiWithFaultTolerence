@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMicroServiceFetchWeather
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMicroServiceTest", "WebMicroServiceTest\WebMicroServiceTest.csproj", "{14B6E6FF-13BE-4E69-8743-20A6F3FFEF17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSpa", "WebSpa\WebSpa.csproj", "{BC51E80B-28E5-480C-9470-BE1C8ED2A660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{14B6E6FF-13BE-4E69-8743-20A6F3FFEF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B6E6FF-13BE-4E69-8743-20A6F3FFEF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14B6E6FF-13BE-4E69-8743-20A6F3FFEF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC51E80B-28E5-480C-9470-BE1C8ED2A660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC51E80B-28E5-480C-9470-BE1C8ED2A660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC51E80B-28E5-480C-9470-BE1C8ED2A660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC51E80B-28E5-480C-9470-BE1C8ED2A660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
