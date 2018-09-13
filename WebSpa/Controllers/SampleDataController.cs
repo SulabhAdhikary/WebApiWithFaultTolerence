@@ -3,42 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebSpa.Helper;
+using WebSpa.Services;
+using WebSpa.ViewModel;
 
 namespace WebSpa.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        private IWeatherDataService _weatherDataService;
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        public  SampleDataController(IWeatherDataService weatherDataService)
+        {
+            _weatherDataService = weatherDataService;
+        }
+
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public async Task<IActionResult> WeatherForecasts()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            try
             {
-                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            });
-        }
-
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
+                var resfromWebapi = await _weatherDataService.GetWeatherForcastData();
+                return StatusCode(200, resfromWebapi);
+            }catch(MicroServiceCallException ex)
             {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
+                return StatusCode(503, Json("Could get data from microservices"));
             }
+          
         }
+
+       
     }
 }
